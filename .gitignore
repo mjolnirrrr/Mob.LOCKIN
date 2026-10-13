@@ -1,0 +1,11 @@
+node_modules/
+www/
+dist/
+.angular/
+out-tsc/
+ios/
+android/
+.DS_Store
+*.log
+test-results/
+playwright-report/
