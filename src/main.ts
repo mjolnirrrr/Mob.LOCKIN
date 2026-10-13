@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 import { APP_INITIALIZER } from "@angular/core";
-=======
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
 import { bootstrapApplication } from "@angular/platform-browser";
 import { RouteReuseStrategy, provideRouter } from "@angular/router";
 import {
@@ -12,25 +9,15 @@ import { provideAnimations } from "@angular/platform-browser/animations";
 
 import { AppComponent } from "./app/app.component";
 import { routes } from "./app/app.routes";
-<<<<<<< HEAD
 import { initStore } from "./app/services/local-store";
 
 bootstrapApplication(AppComponent, {
   providers: [
     // Load saved data from the device before any page or service starts.
     { provide: APP_INITIALIZER, useFactory: () => initStore, multi: true },
-=======
-
-bootstrapApplication(AppComponent, {
-  providers: [
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular({}),
     provideRouter(routes),
     provideAnimations(),
   ],
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df

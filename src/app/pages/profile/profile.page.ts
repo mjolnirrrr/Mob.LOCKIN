@@ -7,24 +7,17 @@ import {
   IonTitle,
   IonContent,
   IonToggle,
-<<<<<<< HEAD
   IonButton,
   IonIcon,
 } from "@ionic/angular/standalone";
 import { addIcons } from "ionicons";
 import { helpCircleOutline } from "ionicons/icons";
-=======
-} from "@ionic/angular/standalone";
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
 import { MockDataService } from "../../services/mock-data.service";
 import { MockAuthService } from "../../services/mock-auth.service";
 import { ThemeService } from "../../services/theme.service";
 import { validEmail, readLocal, writeLocal } from "../../services/local-store";
-<<<<<<< HEAD
 import { GuideTourService, TourStep } from "../../services/guide-tour.service";
 
-=======
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
 @Component({
   selector: "app-profile",
   standalone: true,
@@ -36,11 +29,8 @@ import { GuideTourService, TourStep } from "../../services/guide-tour.service";
     IonTitle,
     IonContent,
     IonToggle,
-<<<<<<< HEAD
     IonButton,
     IonIcon,
-=======
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
   ],
   templateUrl: "./profile.page.html",
   styleUrls: ["./profile.page.scss"],
@@ -50,17 +40,13 @@ export class ProfilePage {
   readonly theme = inject(ThemeService);
   private auth = inject(MockAuthService);
   private router = inject(Router);
-<<<<<<< HEAD
   private tour = inject(GuideTourService);
   private busy = false;
 
-=======
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
   draft = { ...this.data.profile() };
   message = signal("");
   error = signal("");
   reminders = signal(readLocal("lockin.reminders", true));
-<<<<<<< HEAD
 
   readonly guideKey = "lockin.guide.profile";
   readonly guideSteps: TourStep[] = [
@@ -134,11 +120,6 @@ export class ProfilePage {
     await this.tour.start(this.guideSteps);
   }
 
-=======
-  ionViewWillEnter(): void {
-    this.cancel();
-  }
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
   cancel(): void {
     this.draft = { ...this.data.profile() };
     this.error.set("");
@@ -172,8 +153,4 @@ export class ProfilePage {
     this.auth.logout();
     this.router.navigateByUrl("/login", { replaceUrl: true });
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df

@@ -1,5 +1,4 @@
 import { signal } from "@angular/core";
-<<<<<<< HEAD
 import { Preferences } from "@capacitor/preferences";
 
 export const storageError = signal("");
@@ -36,18 +35,10 @@ export function readLocal<T>(key: string, fallback: T): T {
   try {
     const raw = cache.get(key);
     return raw !== undefined ? (JSON.parse(raw) as T) : fallback;
-=======
-export const storageError = signal("");
-export function readLocal<T>(key: string, fallback: T): T {
-  try {
-    const raw = localStorage.getItem(key);
-    return raw ? (JSON.parse(raw) as T) : fallback;
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
   } catch {
     return fallback;
   }
 }
-<<<<<<< HEAD
 
 export function writeLocal(key: string, value: unknown): void {
   try {
@@ -61,18 +52,6 @@ export function writeLocal(key: string, value: unknown): void {
   }
 }
 
-=======
-export function writeLocal(key: string, value: unknown): void {
-  try {
-    localStorage.setItem(key, JSON.stringify(value));
-    storageError.set("");
-  } catch {
-    storageError.set(
-      "Storage is unavailable or full. Your latest changes cannot survive a refresh.",
-    );
-  }
-}
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
 export function localDate(date = new Date()): string {
   return [
     date.getFullYear(),
@@ -80,10 +59,6 @@ export function localDate(date = new Date()): string {
     String(date.getDate()).padStart(2, "0"),
   ].join("-");
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
 export function timeMinutes(value: string): number {
   const match = value.trim().match(/^(\d{1,2}):(\d{2})(?:\s*(AM|PM))?$/i);
   if (!match) return 0;
@@ -91,11 +66,6 @@ export function timeMinutes(value: string): number {
   if (match[3]) hour = (hour % 12) + (match[3].toUpperCase() === "PM" ? 12 : 0);
   return hour * 60 + Number(match[2]);
 }
-<<<<<<< HEAD
 
 export const validEmail = (email: string): boolean =>
   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
-=======
-export const validEmail = (email: string): boolean =>
-  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df

@@ -1,9 +1,5 @@
 import { TaskListComponent } from "../../components/task-list/task-list.component";
-<<<<<<< HEAD
 import { readLocal, writeLocal } from "../../services/local-store";
-=======
-import { readLocal } from "../../services/local-store";
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
 import { Component, inject } from "@angular/core";
 import { TitleCasePipe } from "@angular/common";
 import { Router } from "@angular/router";
@@ -24,19 +20,13 @@ import {
   planetOutline,
   flaskOutline,
   leafOutline,
-<<<<<<< HEAD
   helpCircleOutline,
-=======
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
 } from "ionicons/icons";
 import { MockDataService } from "../../services/mock-data.service";
 import { AddQuizModalComponent } from "../../components/add-quiz-modal/add-quiz-modal.component";
 import { AddMaterialModalComponent } from "../../components/add-material-modal/add-material-modal.component";
-<<<<<<< HEAD
 import { WelcomeTourComponent } from "../../components/welcome-tour/welcome-tour.component";
 import { GuideTourService, TourStep } from "../../services/guide-tour.service";
-=======
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
 
 @Component({
   selector: "app-home",
@@ -46,7 +36,6 @@ import { GuideTourService, TourStep } from "../../services/guide-tour.service";
   styleUrls: ["./home.page.scss"],
 })
 export class HomePage {
-<<<<<<< HEAD
   public data = inject(MockDataService);
   private router = inject(Router);
   private modalCtrl = inject(ModalController);
@@ -101,12 +90,6 @@ export class HomePage {
       text: "Switch between Home, Study, Calendar, Stats and Profile.",
     },
   ];
-=======
-  // Dependency Injection using inject()
-  public data = inject(MockDataService);
-  private router = inject(Router);
-  private modalCtrl = inject(ModalController);
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
 
   greeting(): string {
     const hour = new Date().getHours();
@@ -138,10 +121,6 @@ export class HomePage {
       return "Halfway there — one focused block at a time.";
     return "The finish line is close. Keep going.";
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
   constructor() {
     addIcons({
       notificationsOutline,
@@ -154,7 +133,6 @@ export class HomePage {
       planetOutline,
       flaskOutline,
       leafOutline,
-<<<<<<< HEAD
       helpCircleOutline,
     });
   }
@@ -193,14 +171,6 @@ export class HomePage {
     return readLocal("lockin.reminders", true);
   }
 
-=======
-    });
-  }
-
-  showUpcoming(): boolean {
-    return readLocal("lockin.reminders", true);
-  }
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
   goProfile(): void {
     this.router.navigateByUrl("/tabs/profile");
   }
@@ -228,8 +198,4 @@ export class HomePage {
     });
     await modal.present();
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df

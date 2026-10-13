@@ -1,5 +1,4 @@
 <ion-header class="ion-no-border"
-<<<<<<< HEAD
   ><ion-toolbar
     ><ion-title>Calendar</ion-title>
     <ion-button
@@ -10,9 +9,6 @@
     >
       <ion-icon slot="icon-only" name="help-circle-outline"></ion-icon>
     </ion-button> </ion-toolbar></ion-header
-=======
-  ><ion-toolbar><ion-title>Calendar</ion-title></ion-toolbar></ion-header
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
 ><ion-content class="ion-padding"
   ><main class="page-shell">
     <div class="section-header">
@@ -20,7 +16,6 @@
         <p class="eyebrow">A LITTLE STRUCTURE</p>
         <h1>Your week, at a glance.</h1>
       </div>
-<<<<<<< HEAD
       <button
         class="secondary"
         type="button"
@@ -32,12 +27,6 @@
     </div>
     <section class="soft-card calendar-card">
       <div class="cal-header" data-guide="cal-nav">
-=======
-      <button class="secondary" type="button" (click)="today()">Today</button>
-    </div>
-    <section class="soft-card calendar-card">
-      <div class="cal-header">
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
         <button
           type="button"
           class="icon-button"
@@ -56,11 +45,7 @@
           →
         </button>
       </div>
-<<<<<<< HEAD
       <div class="week-strip" data-guide="cal-week">
-=======
-      <div class="week-strip">
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
         @for(d of weekDays();track d.date){<button
           class="day-cell"
           type="button"
@@ -79,7 +64,6 @@
         >}
       </div>
     </section>
-<<<<<<< HEAD
     <section class="soft-card agenda-card" data-guide="cal-agenda">
       <div class="section-header agenda-heading">
         <h2 data-guide="cal-agenda-title">{{ selectedDateLabel() }}</h2>
@@ -89,19 +73,9 @@
           data-guide="cal-add"
           (click)="openAddQuiz()"
         >
-=======
-    <section class="soft-card agenda-card">
-      <div class="section-header agenda-heading">
-        <h2>{{ selectedDateLabel() }}</h2>
-        <button type="button" class="primary" (click)="openAddQuiz()">
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
           + Add task
         </button>
       </div>
       <app-task-list [tasks]="dayTasks()"></app-task-list>
     </section></main
-<<<<<<< HEAD
 ></ion-content>
-=======
-></ion-content>
->>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
