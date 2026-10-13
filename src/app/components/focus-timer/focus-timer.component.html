@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 <section class="focus-card" data-guide="timer">
+=======
+<section class="focus-card">
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
   <div>
     <p class="eyebrow">ONE THING AT A TIME</p>
     <h2>A moment to focus.</h2>
     <p class="muted">Put distractions aside. Start where you are.</p>
   </div>
+<<<<<<< HEAD
   <div class="timer-options" data-guide="timer-options">
+=======
+  <div class="timer-options">
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
     @for (minutes of [15, 25, 50]; track minutes) {
       <button
         type="button"
@@ -16,6 +24,7 @@
       </button>
     }
   </div>
+<<<<<<< HEAD
   <p
     class="clock"
     data-guide="timer-clock"
@@ -31,6 +40,13 @@
       data-guide="timer-start"
       (click)="focus.toggle()"
     >
+=======
+  <p class="clock" role="timer" aria-label="Focus time remaining">
+    {{ focus.clock() }}
+  </p>
+  <div class="button-row">
+    <button type="button" class="primary" (click)="focus.toggle()">
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
       {{
         focus.running()
           ? "Pause"
@@ -41,7 +57,10 @@
     ><button
       type="button"
       class="secondary"
+<<<<<<< HEAD
       data-guide="timer-finish"
+=======
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
       (click)="focus.finish()"
       [disabled]="!focus.running() && focus.remaining() === focus.duration()"
     >
@@ -51,4 +70,8 @@
   @if (focus.message()) {
     <p class="success" role="status">{{ focus.message() }}</p>
   }
+<<<<<<< HEAD
 </section>
+=======
+</section>
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df

@@ -4,6 +4,7 @@
       <a class="wordmark" href="/tabs/home"
         ><img src="assets/icon/icon.png" alt="" />
         <span class="wordmark-text">lock in<span>.</span></span></a
+<<<<<<< HEAD
       >
       <div class="home-top-actions">
         <button
@@ -24,6 +25,12 @@
           ><span>{{ data.profile().name }}</span>
         </button>
       </div>
+=======
+      ><button class="account-pill" type="button" (click)="goProfile()">
+        <span class="mini-avatar">{{ data.profile().avatarInitials }}</span
+        ><span>{{ data.profile().name }}</span>
+      </button>
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
     </header>
     <section class="welcome">
       <div>
@@ -31,11 +38,15 @@
         <h1>{{ greeting() }}, {{ data.profile().name }}.</h1>
         <p class="muted">{{ motivation() }}</p>
       </div>
+<<<<<<< HEAD
       <div
         class="progress-orbit"
         data-guide="progress"
         [style.--progress]="data.completionRate()"
       >
+=======
+      <div class="progress-orbit" [style.--progress]="data.completionRate()">
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
         <div>
           <strong
             >{{ data.todaysCompleted() }}/{{ data.todaysTasks().length
@@ -52,12 +63,16 @@
             <p class="eyebrow">{{ data.today() }}</p>
             <h2>Today's plan</h2>
           </div>
+<<<<<<< HEAD
           <button
             type="button"
             class="text-button"
             data-guide="calendar-link"
             (click)="goCalendar()"
           >
+=======
+          <button type="button" class="text-button" (click)="goCalendar()">
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
             Calendar ↗
           </button>
         </div>
@@ -75,17 +90,25 @@
           ></progress>
         </div>
         <app-task-list [tasks]="data.todaysTasks()"></app-task-list
+<<<<<<< HEAD
         ><button
           class="add-task-button"
           type="button"
           data-guide="add-task"
           (click)="openAddQuiz()"
         >
+=======
+        ><button class="add-task-button" type="button" (click)="openAddQuiz()">
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
           + Add a task
         </button>
       </section>
       <aside>
+<<<<<<< HEAD
         <section class="soft-card next-card" data-guide="up-next">
+=======
+        <section class="soft-card next-card">
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
           <p class="eyebrow">UP NEXT</p>
           @if(showUpcoming()){ @if(data.upcoming();as next){<span class="badge"
             >{{ data.subjectById(next.subjectId)?.name }}</span
@@ -120,12 +143,16 @@
         </section>
         <section class="quick-section">
           <p class="eyebrow">MAKE SPACE FOR PROGRESS</p>
+<<<<<<< HEAD
           <button
             class="quick-action"
             type="button"
             data-guide="focus"
             (click)="goStudy()"
           >
+=======
+          <button class="quick-action" type="button" (click)="goStudy()">
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
             <span
               ><strong>Start a focus session</strong
               ><small>One subject. Your full attention.</small></span
@@ -133,7 +160,10 @@
           ><button
             class="quick-action"
             type="button"
+<<<<<<< HEAD
             data-guide="material"
+=======
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
             (click)="openAddMaterial()"
           >
             <span
@@ -151,7 +181,11 @@
           View study space ↗
         </button>
       </div>
+<<<<<<< HEAD
       <div class="subjects-grid" data-guide="subjects">
+=======
+      <div class="subjects-grid">
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
         @for(s of data.subjects();track s.id){<button
           class="subject-tile"
           type="button"
@@ -170,4 +204,8 @@
       </div>
     </section>
   </main></ion-content
+<<<<<<< HEAD
 >
+=======
+>
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df

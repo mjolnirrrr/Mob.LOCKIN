@@ -1,6 +1,11 @@
 import { TaskListComponent } from "../../components/task-list/task-list.component";
+<<<<<<< HEAD
 import { localDate, readLocal, writeLocal } from "../../services/local-store";
 import { Component, computed, inject, signal } from "@angular/core";
+=======
+import { localDate } from "../../services/local-store";
+import { Component, computed, signal } from "@angular/core";
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
 import {
   IonHeader,
   IonToolbar,
@@ -18,11 +23,17 @@ import {
   chevronForward,
   addOutline,
   calendarClearOutline,
+<<<<<<< HEAD
   helpCircleOutline,
 } from "ionicons/icons";
 import { MockDataService } from "../../services/mock-data.service";
 import { AddQuizModalComponent } from "../../components/add-quiz-modal/add-quiz-modal.component";
 import { GuideTourService, TourStep } from "../../services/guide-tour.service";
+=======
+} from "ionicons/icons";
+import { MockDataService } from "../../services/mock-data.service";
+import { AddQuizModalComponent } from "../../components/add-quiz-modal/add-quiz-modal.component";
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
 
 @Component({
   selector: "app-calendar",
@@ -45,6 +56,7 @@ export class CalendarPage {
   selectedDate = signal(this.data.today());
   weekOffset = signal(0);
 
+<<<<<<< HEAD
   private tour = inject(GuideTourService);
   private busy = false;
 
@@ -87,10 +99,13 @@ export class CalendarPage {
     },
   ];
 
+=======
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
   constructor(
     public data: MockDataService,
     private modalCtrl: ModalController,
   ) {
+<<<<<<< HEAD
     addIcons({
       chevronBack,
       chevronForward,
@@ -98,6 +113,9 @@ export class CalendarPage {
       calendarClearOutline,
       helpCircleOutline,
     });
+=======
+    addIcons({ chevronBack, chevronForward, addOutline, calendarClearOutline });
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
   }
 
   weekDays = computed(() => {
@@ -134,6 +152,7 @@ export class CalendarPage {
 
   dayTasks = computed(() => this.data.tasksForDate(this.selectedDate()));
 
+<<<<<<< HEAD
   // Shows this page's guide once, the first time the tab is opened.
   async ionViewDidEnter(): Promise<void> {
     if (this.busy || readLocal(this.guideKey, false)) return;
@@ -154,6 +173,8 @@ export class CalendarPage {
     await this.tour.start(this.guideSteps);
   }
 
+=======
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
   today(): void {
     this.weekOffset.set(0);
     this.selectedDate.set(this.data.today());
@@ -171,4 +192,8 @@ export class CalendarPage {
     });
     await modal.present();
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df

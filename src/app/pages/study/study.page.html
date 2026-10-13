@@ -1,4 +1,5 @@
 <ion-header class="ion-no-border"
+<<<<<<< HEAD
   ><ion-toolbar
     ><ion-title>Study space</ion-title>
     <ion-button
@@ -9,6 +10,9 @@
     >
       <ion-icon slot="icon-only" name="help-circle-outline"></ion-icon>
     </ion-button> </ion-toolbar></ion-header
+=======
+  ><ion-toolbar><ion-title>Study space</ion-title></ion-toolbar></ion-header
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
 ><ion-content class="ion-padding"
   ><main class="page-shell">
     <header class="page-intro">
@@ -20,7 +24,11 @@
       <section>
         <div class="section-header">
           <h2>Your subjects</h2>
+<<<<<<< HEAD
           <label class="search-label" data-guide="search"
+=======
+          <label class="search-label"
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
             ><span class="sr-only">Search subjects</span
             ><input
               type="search"
@@ -28,7 +36,11 @@
               placeholder="Find a subject"
           /></label>
         </div>
+<<<<<<< HEAD
         <div class="subject-list" data-guide="subject-list">
+=======
+        <div class="subject-list">
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
           @for(s of filteredSubjects();track s.id){<button
             type="button"
             class="soft-card subject-row"
@@ -57,6 +69,7 @@
         </div>
         <div class="section-header materials-heading">
           <h2>Recent materials</h2>
+<<<<<<< HEAD
           <button
             type="button"
             class="text-button"
@@ -67,6 +80,13 @@
           </button>
         </div>
         <div class="soft-card" data-guide="recent-materials">
+=======
+          <button type="button" class="text-button" (click)="goMaterials()">
+            View all ↗
+          </button>
+        </div>
+        <div class="soft-card">
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
           @for(m of recentMaterials();track m.id){<button
             class="material-preview"
             type="button"
@@ -85,7 +105,10 @@
           }<button
             class="text-button"
             type="button"
+<<<<<<< HEAD
             data-guide="add-material"
+=======
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
             (click)="openAddMaterial()"
           >
             + Add material
@@ -93,8 +116,13 @@
         </div>
       </section>
       <aside>
+<<<<<<< HEAD
                 <app-focus-timer></app-focus-timer>
         <section class="soft-card plan-note" data-guide="plan-task">
+=======
+        <app-focus-timer></app-focus-timer>
+        <section class="soft-card plan-note">
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
           <p class="eyebrow">A SMALL NEXT STEP</p>
           <h2>Turn intention into a plan.</h2>
           <p class="muted">Schedule a quiz, activity or study session.</p>
@@ -105,4 +133,8 @@
       </aside>
     </div>
   </main></ion-content
+<<<<<<< HEAD
 >
+=======
+>
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df

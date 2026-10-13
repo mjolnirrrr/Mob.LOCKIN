@@ -1,5 +1,8 @@
 import { FocusTimerComponent } from "../../components/focus-timer/focus-timer.component";
+<<<<<<< HEAD
 import { readLocal, writeLocal } from "../../services/local-store";
+=======
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
 import { FormsModule } from "@angular/forms";
 import { Component, computed, inject } from "@angular/core";
 import { Router } from "@angular/router";
@@ -20,12 +23,18 @@ import {
   imageOutline,
   addOutline,
   folderOutline,
+<<<<<<< HEAD
   helpCircleOutline,
+=======
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
 } from "ionicons/icons";
 import { MockDataService } from "../../services/mock-data.service";
 import { AddQuizModalComponent } from "../../components/add-quiz-modal/add-quiz-modal.component";
 import { AddMaterialModalComponent } from "../../components/add-material-modal/add-material-modal.component";
+<<<<<<< HEAD
 import { GuideTourService, TourStep } from "../../services/guide-tour.service";
+=======
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
 
 @Component({
   selector: "app-study",
@@ -54,6 +63,7 @@ export class StudyPage {
   public data = inject(MockDataService);
   private router = inject(Router);
   private modalCtrl = inject(ModalController);
+<<<<<<< HEAD
   private tour = inject(GuideTourService);
   private busy = false;
 
@@ -115,6 +125,8 @@ export class StudyPage {
       text: "Switch between Home, Study, Calendar, Stats and Profile.",
     },
   ];
+=======
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
 
   readonly recentMaterials = computed(() => {
     return this.data.materials().slice(0, 4);
@@ -127,6 +139,7 @@ export class StudyPage {
       imageOutline,
       addOutline,
       folderOutline,
+<<<<<<< HEAD
       helpCircleOutline,
     });
   }
@@ -151,6 +164,11 @@ export class StudyPage {
     await this.tour.start(this.guideSteps);
   }
 
+=======
+    });
+  }
+
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
   goMaterials(subjectId?: string): void {
     this.router.navigate(
       ["/materials"],
@@ -173,4 +191,8 @@ export class StudyPage {
     });
     await modal.present();
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df

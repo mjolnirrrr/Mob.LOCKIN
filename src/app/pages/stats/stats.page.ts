@@ -1,11 +1,18 @@
+<<<<<<< HEAD
 import { Component, inject } from "@angular/core";
+=======
+import { Component } from "@angular/core";
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
 import {
   IonHeader,
   IonToolbar,
   IonTitle,
   IonContent,
   IonIcon,
+<<<<<<< HEAD
   IonButton,
+=======
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
   IonProgressBar,
 } from "@ionic/angular/standalone";
 import { addIcons } from "ionicons";
@@ -14,11 +21,16 @@ import {
   timeOutline,
   ribbonOutline,
   trendingUpOutline,
+<<<<<<< HEAD
   helpCircleOutline,
 } from "ionicons/icons";
 import { MockDataService } from "../../services/mock-data.service";
 import { readLocal, writeLocal } from "../../services/local-store";
 import { GuideTourService, TourStep } from "../../services/guide-tour.service";
+=======
+} from "ionicons/icons";
+import { MockDataService } from "../../services/mock-data.service";
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
 
 @Component({
   selector: "app-stats",
@@ -29,13 +41,17 @@ import { GuideTourService, TourStep } from "../../services/guide-tour.service";
     IonTitle,
     IonContent,
     IonIcon,
+<<<<<<< HEAD
     IonButton,
+=======
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
     IonProgressBar,
   ],
   templateUrl: "./stats.page.html",
   styleUrls: ["./stats.page.scss"],
 })
 export class StatsPage {
+<<<<<<< HEAD
   private tour = inject(GuideTourService);
   private busy = false;
 
@@ -106,6 +122,10 @@ export class StatsPage {
   async openGuide(): Promise<void> {
     await new Promise((r) => setTimeout(r, 300));
     await this.tour.start(this.guideSteps);
+=======
+  constructor(public data: MockDataService) {
+    addIcons({ flameOutline, timeOutline, ribbonOutline, trendingUpOutline });
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
   }
 
   progressMessage(): string {
@@ -118,4 +138,8 @@ export class StatsPage {
       return "Progress is already moving. Every completed task counts.";
     return "Your progress will appear here as you complete tasks and focus sessions.";
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> be67fa97e984a5df61c90f9702cd575a171f34df
