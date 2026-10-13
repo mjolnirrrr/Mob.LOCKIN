@@ -1,0 +1,93 @@
+<ion-header class="ion-no-border"
+  ><ion-toolbar><ion-title>Study space</ion-title></ion-toolbar></ion-header
+><ion-content class="ion-padding"
+  ><main class="page-shell">
+    <header class="page-intro">
+      <p class="eyebrow">MY STUDY SPACE</p>
+      <h1>Make time for what matters.</h1>
+      <p class="muted">Subjects, materials, and focused time in one place.</p>
+    </header>
+    <div class="study-layout">
+      <section>
+        <div class="section-header">
+          <h2>Your subjects</h2>
+          <label class="search-label"
+            ><span class="sr-only">Search subjects</span
+            ><input
+              type="search"
+              [(ngModel)]="query"
+              placeholder="Find a subject"
+          /></label>
+        </div>
+        <div class="subject-list">
+          @for(s of filteredSubjects();track s.id){<button
+            type="button"
+            class="soft-card subject-row"
+            (click)="goMaterials(s.id)"
+            [style.--subject-color]="s.color"
+          >
+            <div class="subject-icon">
+              <ion-icon [name]="s.icon"></ion-icon>
+            </div>
+            <div class="subject-info">
+              <h3>{{ s.name }}</h3>
+              <span>{{ s.topicCount }} planned tasks</span
+              ><progress
+                [value]="s.progress"
+                max="100"
+                [attr.aria-label]="s.name + ' completion'"
+              ></progress>
+            </div>
+            <span class="progress-pct">{{ s.progress }}%</span></button
+          >}@empty{
+          <div class="empty-state">
+            <h3>No matching subjects.</h3>
+            <p>Try Calculus, Physics, Chemistry or Biology.</p>
+          </div>
+          }
+        </div>
+        <div class="section-header materials-heading">
+          <h2>Recent materials</h2>
+          <button type="button" class="text-button" (click)="goMaterials()">
+            View all ↗
+          </button>
+        </div>
+        <div class="soft-card">
+          @for(m of recentMaterials();track m.id){<button
+            class="material-preview"
+            type="button"
+            (click)="goMaterials(m.subjectId)"
+          >
+            <ion-icon name="document-text-outline"></ion-icon
+            ><span
+              ><strong>{{ m.name }}</strong
+              ><small>{{ m.kind.toUpperCase() }} · {{ m.size }}</small></span
+            ><span>↗</span></button
+          >}@empty{
+          <div class="empty-state">
+            <h3>Your references belong here.</h3>
+            <p>Add a material to keep it close to your study plan.</p>
+          </div>
+          }<button
+            class="text-button"
+            type="button"
+            (click)="openAddMaterial()"
+          >
+            + Add material
+          </button>
+        </div>
+      </section>
+      <aside>
+        <app-focus-timer></app-focus-timer>
+        <section class="soft-card plan-note">
+          <p class="eyebrow">A SMALL NEXT STEP</p>
+          <h2>Turn intention into a plan.</h2>
+          <p class="muted">Schedule a quiz, activity or study session.</p>
+          <button class="secondary" type="button" (click)="openAddQuiz()">
+            + Plan a task
+          </button>
+        </section>
+      </aside>
+    </div>
+  </main></ion-content
+>

@@ -1,0 +1,7 @@
+{
+  "name": "lock-in-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

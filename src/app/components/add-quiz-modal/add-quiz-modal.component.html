@@ -1,0 +1,81 @@
+<ion-header class="ion-no-border"
+  ><ion-toolbar
+    ><ion-title>{{ task ? "Edit task" : "Plan something" }}</ion-title
+    ><button
+      class="icon-button"
+      slot="end"
+      type="button"
+      aria-label="Close task form"
+      (click)="dismiss()"
+    >
+      ✕
+    </button></ion-toolbar
+  ></ion-header
+>
+<ion-content class="ion-padding"
+  ><form class="modal-form" (ngSubmit)="create()" novalidate>
+    <p class="muted">Give your next study step a time and a place.</p>
+    <label
+      >Title<input
+        name="title"
+        [(ngModel)]="title"
+        maxlength="150"
+        placeholder="e.g. Review chapter 3"
+        required
+    /></label>
+    <label
+      >Subject<select
+        aria-label="Subject"
+        name="subject"
+        [(ngModel)]="subjectId"
+        required
+      >
+        <option value="" disabled>Choose a subject</option>
+        @for (s of data.subjects(); track s.id) {
+          <option [value]="s.id">{{ s.name }}</option>
+        }
+      </select></label
+    >
+    <label
+      >Type<select aria-label="Type" name="type" [(ngModel)]="type">
+        <option value="quiz">Quiz</option>
+        <option value="activity">Activity</option>
+        <option value="session">Study session</option>
+      </select></label
+    >
+    <label
+      >Date<input name="date" type="date" [(ngModel)]="date" required
+    /></label>
+    <div class="form-grid">
+      <label
+        >Start time<input
+          name="time"
+          type="time"
+          [(ngModel)]="time"
+          required /></label
+      ><label
+        >End time <span class="muted">optional</span
+        ><input name="end" type="time" [(ngModel)]="endTime"
+      /></label>
+    </div>
+    <label
+      >Description <span class="muted">optional</span
+      ><textarea
+        name="description"
+        [(ngModel)]="description"
+        rows="3"
+        maxlength="1000"
+      ></textarea>
+    </label>
+    @if (error) {
+      <p class="error" role="alert">{{ error }}</p>
+    }
+    <div class="button-row">
+      <button class="primary" type="submit">
+        {{ task ? "Save task" : "Create task" }}</button
+      ><button class="secondary" type="button" (click)="dismiss()">
+        Cancel
+      </button>
+    </div>
+  </form></ion-content
+>

@@ -1,0 +1,3 @@
+const http=require('node:http'),fs=require('node:fs'),path=require('node:path');
+const base=path.resolve(__dirname, '../www/browser');
+http.createServer((req,res)=>{const url=new URL(req.url,'http://localhost');let p=path.join(base,decodeURIComponent(url.pathname));if(!p.startsWith(base)){res.writeHead(403);return res.end();}if(!fs.existsSync(p)||fs.statSync(p).isDirectory())p=path.join(base,'index.html');res.setHeader('Content-Type',({'.html':'text/html','.js':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.png':'image/png'})[path.extname(p)]||'application/octet-stream');fs.createReadStream(p).pipe(res);}).listen(8100,'127.0.0.1',()=>console.log('Lock In running http://127.0.0.1:8100'));

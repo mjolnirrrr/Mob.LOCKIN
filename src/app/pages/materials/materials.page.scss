@@ -1,0 +1,108 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+.section-header {
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.search {
+  max-width: 620px;
+  margin: 14px 0 16px;
+}
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 24px;
+}
+.filter-row button {
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ion-color-medium);
+  font-size: 13px;
+}
+.filter-row .active {
+  background: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast);
+  border-color: transparent;
+}
+.materials-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 430px), 1fr));
+}
+.material-card {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: start;
+  padding: 18px;
+  border-left: 3px solid var(--subject-color);
+}
+.file-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: color-mix(in srgb, var(--subject-color) 12%, transparent);
+  color: var(--subject-color);
+  font-size: 22px;
+}
+.material-copy {
+  min-width: 0;
+}
+.material-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.added-date {
+  font-size: 10px;
+  color: var(--ion-color-medium);
+}
+.material-card h2 {
+  font-size: 15px;
+  line-height: 1.45;
+  margin: 10px 0 5px;
+  overflow-wrap: anywhere;
+}
+.material-card p {
+  font-size: 12px;
+}
+.material-card .button-row {
+  margin: 0;
+  align-self: center;
+  flex-direction: column;
+  gap: 0;
+}
+.material-card .subject-dot {
+  margin-right: 6px;
+}
+@media (max-width: 520px) {
+  .material-card {
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+  .file-icon {
+    width: 44px;
+    height: 44px;
+  }
+  .material-card .button-row {
+    grid-column: 2;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  .material-card .text-button:first-child {
+    padding-left: 0;
+  }
+}
+.material-card a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 13px;
+}

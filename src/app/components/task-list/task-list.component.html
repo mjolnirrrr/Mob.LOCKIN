@@ -1,0 +1,56 @@
+@for (task of tasks; track task.id) {
+  <article
+    class="task-row"
+    [class.completed]="task.done"
+    [style.--subject-color]="data.subjectById(task.subjectId)?.color"
+  >
+    <button
+      type="button"
+      class="check-button"
+      [attr.aria-label]="
+        (task.done ? 'Mark incomplete: ' : 'Complete: ') + task.title
+      "
+      [attr.aria-pressed]="task.done"
+      (click)="data.toggleTaskDone(task.id)"
+    >
+      {{ task.done ? "✓" : "" }}
+    </button>
+    <div class="task-copy">
+      <h3>{{ task.title }}</h3>
+      <p>
+        <span class="subject-dot"></span>
+        {{ data.subjectById(task.subjectId)?.name }} <span>·</span>
+        {{ task.startTime }}{{ task.endTime ? " – " + task.endTime : "" }}
+      </p>
+      <span class="task-kind">{{ task.type }}</span>
+      @if (task.description) {
+        <p>{{ task.description }}</p>
+      }
+    </div>
+    <div class="task-actions">
+      <button
+        type="button"
+        class="text-button"
+        (click)="edit(task)"
+        [attr.aria-label]="'Edit ' + task.title"
+      >
+        Edit</button
+      ><button
+        type="button"
+        class="text-button"
+        (click)="remove(task)"
+        [attr.aria-label]="'Delete ' + task.title"
+      >
+        Delete
+      </button>
+    </div>
+  </article>
+} @empty {
+  <div class="empty-state">
+    <span class="empty-mark">✓</span>
+    <h3>A little room to focus.</h3>
+    <p>
+      No tasks here yet. Add a quiz, activity or study session to make a plan.
+    </p>
+  </div>
+}

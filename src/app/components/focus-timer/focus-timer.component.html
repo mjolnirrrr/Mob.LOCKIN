@@ -1,0 +1,43 @@
+<section class="focus-card">
+  <div>
+    <p class="eyebrow">ONE THING AT A TIME</p>
+    <h2>A moment to focus.</h2>
+    <p class="muted">Put distractions aside. Start where you are.</p>
+  </div>
+  <div class="timer-options">
+    @for (minutes of [15, 25, 50]; track minutes) {
+      <button
+        type="button"
+        [class.selected]="focus.duration() === minutes * 60"
+        [disabled]="focus.running() || focus.remaining() !== focus.duration()"
+        (click)="focus.choose(minutes)"
+      >
+        {{ minutes }} min
+      </button>
+    }
+  </div>
+  <p class="clock" role="timer" aria-label="Focus time remaining">
+    {{ focus.clock() }}
+  </p>
+  <div class="button-row">
+    <button type="button" class="primary" (click)="focus.toggle()">
+      {{
+        focus.running()
+          ? "Pause"
+          : focus.remaining() !== focus.duration()
+            ? "Resume"
+            : "Start focus"
+      }}</button
+    ><button
+      type="button"
+      class="secondary"
+      (click)="focus.finish()"
+      [disabled]="!focus.running() && focus.remaining() === focus.duration()"
+    >
+      Finish & save
+    </button>
+  </div>
+  @if (focus.message()) {
+    <p class="success" role="status">{{ focus.message() }}</p>
+  }
+</section>

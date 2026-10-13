@@ -1,0 +1,106 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+.calendar-card {
+  margin: 24px 0;
+}
+.cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cal-header h2 {
+  font-size: 18px;
+}
+.week-strip {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 18px;
+}
+.day-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  padding: 16px 0;
+  background: transparent;
+  color: var(--ion-text-color);
+  border: 1px solid transparent;
+}
+.day-cell.today:not(.active) {
+  border-color: var(--ion-color-primary);
+  background: var(--accent-soft);
+}
+.day-cell.today:not(.active) .dom {
+  color: var(--ion-color-primary);
+}
+.dow {
+  font-size: 12px;
+  color: var(--ion-color-medium);
+}
+.dom {
+  font-size: 18px;
+  font-weight: 600;
+}
+.active {
+  background: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast);
+}
+.active .dow {
+  color: inherit;
+}
+.day-dot {
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  background: transparent;
+}
+.has-tasks {
+  background: var(--ion-color-primary);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.active .has-tasks {
+  background: currentColor;
+  box-shadow: none;
+}
+.agenda-card {
+  padding: 24px;
+}
+.agenda-heading {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.agenda-card .section-header {
+  gap: 16px;
+  flex-wrap: wrap;
+}
+@media (max-width: 420px) {
+  .calendar-card,
+  .agenda-card {
+    padding: 14px;
+  }
+  .week-strip {
+    gap: 2px;
+  }
+  .day-cell {
+    min-width: 0;
+  }
+  .section-header h1 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 400px) {
+  .calendar-card {
+    padding: 10px;
+  }
+  .week-strip {
+    gap: 0;
+  }
+  .day-cell {
+    min-width: 44px;
+  }
+}

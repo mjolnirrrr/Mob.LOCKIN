@@ -1,0 +1,114 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+.profile-layout {
+  display: grid;
+  gap: 24px;
+}
+.account-card {
+  padding: 28px;
+  background:
+    linear-gradient(145deg, var(--accent-soft), transparent 44%), var(--surface);
+}
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  background: var(--accent-soft);
+  color: var(--ion-color-primary);
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 24px 0 18px;
+}
+.account-card h1 {
+  font-size: 23px;
+  line-height: 1.35;
+}
+.account-card p {
+  overflow-wrap: anywhere;
+}
+.goal-note {
+  border-top: 1px solid var(--line);
+  margin-top: 24px;
+  padding-top: 20px;
+  line-height: 1.6;
+}
+.account-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 18px 0;
+  margin: 20px 0 16px;
+  border-block: 1px solid var(--line);
+}
+.account-stats div {
+  min-width: 0;
+}
+.account-stats strong,
+.account-stats span {
+  display: block;
+}
+.account-stats strong {
+  font: 700 18px/1.2 var(--font-heading);
+  color: var(--ion-text-color);
+}
+.account-stats span {
+  margin-top: 5px;
+  color: var(--ion-color-medium);
+  font-size: 10px;
+  line-height: 1.35;
+}
+.preferences {
+  margin-top: 20px;
+}
+ion-toggle {
+  width: 100%;
+  margin-top: 14px;
+}
+.preferences p {
+  font-size: 12px;
+  margin: 8px 0 14px;
+}
+.profile-form {
+  padding: 28px;
+}
+.profile-form label {
+  margin-top: 22px;
+}
+.account-options {
+  margin-top: 24px;
+}
+.account-options a {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+}
+details {
+  border-top: 1px solid var(--line);
+}
+summary {
+  padding: 16px 0;
+  cursor: pointer;
+  min-height: 48px;
+}
+details p {
+  color: var(--ion-color-medium);
+  line-height: 1.6;
+}
+@media (min-width: 850px) {
+  .profile-layout {
+    grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.5fr);
+  }
+}
+@media (max-width: 420px) {
+  .profile-form,
+  .account-card {
+    padding: 20px;
+  }
+  .account-stats {
+    gap: 6px;
+  }
+}
