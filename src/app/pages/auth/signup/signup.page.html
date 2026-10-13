@@ -1,0 +1,93 @@
+<ion-header class="ion-no-border">
+  <div class="auth-container">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/onboarding" text=""></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="auth-container">
+    <h1>Sign up</h1>
+    <p class="subtitle">Create your account</p>
+
+    <form (ngSubmit)="signup()" novalidate>
+      <ion-item class="form-field" lines="none">
+        <ion-input
+          label="Full name"
+          labelPlacement="stacked"
+          placeholder="Enter your name"
+          name="name"
+          [(ngModel)]="name"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item class="form-field" lines="none">
+        <ion-input
+          label="Email"
+          labelPlacement="stacked"
+          placeholder="Enter your email"
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item class="form-field" lines="none">
+        <ion-input
+          label="Password"
+          labelPlacement="stacked"
+          placeholder="Create a password"
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item class="form-field" lines="none">
+        <ion-input
+          label="Confirm password"
+          labelPlacement="stacked"
+          placeholder="Confirm your password"
+          type="password"
+          name="confirmPassword"
+          [(ngModel)]="confirmPassword"
+        ></ion-input>
+      </ion-item>
+
+      @if (error()) {
+      <ion-text color="danger"><p class="error">{{ error() }}</p></ion-text>
+      }
+
+      <ion-item lines="none" class="terms-item">
+        <ion-checkbox
+          aria-label="Accept prototype notice"
+          slot="start"
+          name="agreedToTerms"
+          [(ngModel)]="agreedToTerms"
+        ></ion-checkbox>
+        <span class="terms-text"
+          >I understand this is a local prototype. Data stays in this
+          browser.</span
+        >
+      </ion-item>
+
+      <ion-button
+        expand="block"
+        color="dark"
+        class="full-width-btn"
+        type="submit"
+        [disabled]="loading()"
+      >
+        @if (loading()) { <ion-spinner name="dots"></ion-spinner> } @else { Sign
+        up }
+      </ion-button>
+    </form>
+
+    <p class="footer-link">
+      Already have an account? <a routerLink="/login">Log in</a>
+    </p>
+  </div>
+</ion-content>

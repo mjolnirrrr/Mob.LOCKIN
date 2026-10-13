@@ -1,0 +1,148 @@
+<ion-header class="ion-no-border"
+  ><ion-toolbar
+    ><ion-title>Your account</ion-title>
+    <ion-button
+      slot="end"
+      fill="clear"
+      (click)="openGuide()"
+      aria-label="How to use this page"
+    >
+      <ion-icon slot="icon-only" name="help-circle-outline"></ion-icon>
+    </ion-button> </ion-toolbar></ion-header
+>
+<ion-content class="ion-padding"
+  ><main class="page-shell profile-layout">
+    <aside>
+      <section class="account-card soft-card" data-guide="profile-card">
+        <p class="eyebrow">YOUR STUDY SPACE</p>
+        <div class="avatar">{{ data.profile().avatarInitials }}</div>
+        <h1>{{ data.profile().name }}</h1>
+        <p class="muted">{{ data.profile().email }}</p>
+        <div class="goal-note">
+          <span class="eyebrow">WORKING TOWARDS</span>
+          <p>{{ data.profile().studyGoal }}</p>
+        </div>
+        @if (data.profile().school) {
+        <p class="muted">{{ data.profile().school }}</p>
+        }
+        <div
+          class="account-stats"
+          data-guide="profile-stats"
+          aria-label="Study summary"
+        >
+          <div><strong>{{ data.streak() }}</strong><span>day streak</span></div>
+          <div>
+            <strong>{{ data.studyHours() }}</strong><span>hours focused</span>
+          </div>
+          <div>
+            <strong>{{ data.todaysCompleted() }}</strong><span>done today</span>
+          </div>
+        </div>
+        <span class="badge">Saved on this device</span>
+      </section>
+      <section class="soft-card preferences">
+        <h2>Make it yours</h2>
+        <ion-toggle
+          data-guide="toggle-dark"
+          [checked]="theme.dark()"
+          (ionChange)="theme.setDark($event.detail.checked)"
+          >Dark mode</ion-toggle
+        >
+        <p class="muted">A calmer view for evening study.</p>
+        <ion-toggle
+          data-guide="toggle-reminders"
+          [checked]="reminders()"
+          (ionChange)="setReminders($event.detail.checked)"
+          >Study reminders</ion-toggle
+        >
+        <p class="muted">
+          Shows your next task on Home. No push notifications.
+        </p>
+      </section>
+    </aside>
+    <div>
+      <form
+        class="soft-card profile-form"
+        data-guide="profile-form"
+        (ngSubmit)="save()"
+        novalidate
+      >
+        <p class="eyebrow">PERSONAL DETAILS</p>
+        <h2>A planner that feels like you.</h2>
+        <p class="muted">Keep your details and study intention in one place.</p>
+        <label
+          >Full Name <span aria-hidden="true">*</span
+          ><input
+            name="name"
+            [(ngModel)]="draft.name"
+            autocomplete="name"
+            maxlength="100"
+            required
+        /></label>
+        <label
+          >Email Address <span aria-hidden="true">*</span
+          ><input
+            name="email"
+            [(ngModel)]="draft.email"
+            type="email"
+            autocomplete="email"
+            maxlength="150"
+            required
+        /></label>
+        <label
+          >Study Goal <span aria-hidden="true">*</span
+          ><textarea
+            name="goal"
+            [(ngModel)]="draft.studyGoal"
+            rows="3"
+            maxlength="400"
+            required
+          ></textarea>
+        </label>
+        <label
+          >School / Course <span class="muted">optional</span
+          ><input
+            name="school"
+            [(ngModel)]="draft.school"
+            maxlength="150"
+            placeholder="e.g. Computer Science"
+        /></label>
+        @if (error()) {
+        <p class="error" role="alert">{{ error() }}</p>
+        } @if (message()) {
+        <p class="success" role="status">{{ message() }}</p>
+        }
+        <div class="button-row" data-guide="profile-save">
+          <button class="primary" type="submit">Save Changes</button
+          ><button class="secondary" type="button" (click)="cancel()">
+            Cancel
+          </button>
+        </div>
+      </form>
+      <section class="soft-card account-options" data-guide="account-options">
+        <h2>Account & support</h2>
+        <a routerLink="/reset-password">Try password reset <span>↗</span></a>
+        <details>
+          <summary>Help & Support</summary>
+          <p>
+            Add tasks from Home or Calendar. Use Study to save materials and
+            time a focus session. Changes are saved automatically on this
+            device.
+          </p>
+        </details>
+        <details>
+          <summary>Terms & Privacy</summary>
+          <p>
+            This prototype stores your planner in this browser only. There are
+            no real accounts, email messages or cloud backups. Clearing site
+            data removes your planner. Do not use a real password or sensitive
+            data.
+          </p>
+        </details>
+        <button class="danger-button" type="button" (click)="logout()">
+          Log out
+        </button>
+      </section>
+    </div>
+  </main></ion-content
+>

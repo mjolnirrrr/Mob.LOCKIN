@@ -1,0 +1,6 @@
+<ion-app>
+  @if (storageError()) {
+    <div class="storage-warning" role="alert">{{ storageError() }}</div>
+  }
+  <ion-router-outlet></ion-router-outlet>
+</ion-app>

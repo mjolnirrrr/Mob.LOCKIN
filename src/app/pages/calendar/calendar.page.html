@@ -1,0 +1,81 @@
+<ion-header class="ion-no-border"
+  ><ion-toolbar
+    ><ion-title>Calendar</ion-title>
+    <ion-button
+      slot="end"
+      fill="clear"
+      (click)="openGuide()"
+      aria-label="How to use this page"
+    >
+      <ion-icon slot="icon-only" name="help-circle-outline"></ion-icon>
+    </ion-button> </ion-toolbar></ion-header
+><ion-content class="ion-padding"
+  ><main class="page-shell">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow">A LITTLE STRUCTURE</p>
+        <h1>Your week, at a glance.</h1>
+      </div>
+      <button
+        class="secondary"
+        type="button"
+        data-guide="cal-today"
+        (click)="today()"
+      >
+        Today
+      </button>
+    </div>
+    <section class="soft-card calendar-card">
+      <div class="cal-header" data-guide="cal-nav">
+        <button
+          type="button"
+          class="icon-button"
+          aria-label="Previous week"
+          (click)="shiftWeek(-1)"
+        >
+          ←
+        </button>
+        <h2>{{ monthLabel() }}</h2>
+        <button
+          type="button"
+          class="icon-button"
+          aria-label="Next week"
+          (click)="shiftWeek(1)"
+        >
+          →
+        </button>
+      </div>
+      <div class="week-strip" data-guide="cal-week">
+        @for(d of weekDays();track d.date){<button
+          class="day-cell"
+          type="button"
+          [class.active]="d.date === selectedDate()"
+          [class.today]="d.date === data.today()"
+          [attr.aria-pressed]="d.date === selectedDate()"
+          [attr.aria-label]="d.date"
+          (click)="selectedDate.set(d.date)"
+        >
+          <span class="dow">{{ d.dow }}</span
+          ><span class="dom">{{ d.dom }}</span
+          ><span
+            class="day-dot"
+            [class.has-tasks]="data.tasksForDate(d.date).length > 0"
+          ></span></button
+        >}
+      </div>
+    </section>
+    <section class="soft-card agenda-card" data-guide="cal-agenda">
+      <div class="section-header agenda-heading">
+        <h2 data-guide="cal-agenda-title">{{ selectedDateLabel() }}</h2>
+        <button
+          type="button"
+          class="primary"
+          data-guide="cal-add"
+          (click)="openAddQuiz()"
+        >
+          + Add task
+        </button>
+      </div>
+      <app-task-list [tasks]="dayTasks()"></app-task-list>
+    </section></main
+></ion-content>

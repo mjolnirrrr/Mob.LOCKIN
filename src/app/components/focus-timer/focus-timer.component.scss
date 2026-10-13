@@ -1,0 +1,61 @@
+.focus-card {
+  padding: 26px;
+  background: var(--accent-soft);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+h2 {
+  font-size: 20px;
+}
+.timer-options {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+.timer-options button {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface);
+  color: var(--ion-text-color);
+  font-size: 12px;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+.timer-options .selected {
+  border-color: var(--ion-color-primary);
+  color: var(--ion-color-primary);
+  background: var(--accent-soft);
+}
+.timer-options button:active {
+  transform: scale(0.98);
+}
+.clock {
+  font-size: 54px;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  margin: 22px 0;
+  font-weight: 600;
+}
+.button-row {
+  flex-wrap: wrap;
+}
+@media (max-width: 420px) {
+  .focus-card {
+    padding: 22px 20px;
+  }
+  .timer-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .timer-options button {
+    padding-inline: 6px;
+  }
+  .clock {
+    font-size: 46px;
+  }
+}

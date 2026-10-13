@@ -1,0 +1,173 @@
+<ion-content class="ion-padding"
+  ><main class="page-shell">
+    <header class="home-top">
+      <a class="wordmark" href="/tabs/home"
+        ><img src="assets/icon/icon.png" alt="" />
+        <span class="wordmark-text">lock in<span>.</span></span></a
+      >
+      <div class="home-top-actions">
+        <button
+          class="help-btn"
+          type="button"
+          (click)="openGuide()"
+          aria-label="How to use this page"
+        >
+          <ion-icon name="help-circle-outline"></ion-icon>
+        </button>
+        <button
+          class="account-pill"
+          type="button"
+          data-guide="profile"
+          (click)="goProfile()"
+        >
+          <span class="mini-avatar">{{ data.profile().avatarInitials }}</span
+          ><span>{{ data.profile().name }}</span>
+        </button>
+      </div>
+    </header>
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">{{ todayLabel() }}</p>
+        <h1>{{ greeting() }}, {{ data.profile().name }}.</h1>
+        <p class="muted">{{ motivation() }}</p>
+      </div>
+      <div
+        class="progress-orbit"
+        data-guide="progress"
+        [style.--progress]="data.completionRate()"
+      >
+        <div>
+          <strong
+            >{{ data.todaysCompleted() }}/{{ data.todaysTasks().length
+            }}</strong
+          >
+          <span>tasks done</span>
+        </div>
+      </div>
+    </section>
+    <div class="home-grid">
+      <section class="soft-card agenda">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">{{ data.today() }}</p>
+            <h2>Today's plan</h2>
+          </div>
+          <button
+            type="button"
+            class="text-button"
+            data-guide="calendar-link"
+            (click)="goCalendar()"
+          >
+            Calendar ↗
+          </button>
+        </div>
+        <div class="daily-progress">
+          <span
+            ><strong
+              >{{ data.todaysCompleted() }} of {{ data.todaysTasks().length
+              }}</strong
+            >
+            tasks done</span
+          ><progress
+            [value]="data.completionRate()"
+            max="100"
+            aria-label="Today's task completion"
+          ></progress>
+        </div>
+        <app-task-list [tasks]="data.todaysTasks()"></app-task-list
+        ><button
+          class="add-task-button"
+          type="button"
+          data-guide="add-task"
+          (click)="openAddQuiz()"
+        >
+          + Add a task
+        </button>
+      </section>
+      <aside>
+        <section class="soft-card next-card" data-guide="up-next">
+          <p class="eyebrow">UP NEXT</p>
+          @if(showUpcoming()){ @if(data.upcoming();as next){<span class="badge"
+            >{{ data.subjectById(next.subjectId)?.name }}</span
+          >
+          <h2>{{ next.title }}</h2>
+          <p class="muted">{{ next.date }} · {{ next.startTime }}</p>
+          <div class="next-detail">
+            <span
+              class="subject-dot"
+              [style.--subject-color]="data.subjectById(next.subjectId)?.color"
+            ></span>
+            <span
+              >{{ next.type === "session" ? "Focus session" : (next.type |
+              titlecase) }}</span
+            >
+          </div>
+          <button type="button" class="secondary" (click)="goCalendar()">
+            Open calendar ↗</button
+          >} @else {
+          <h2>You're all caught up.</h2>
+          <p class="muted">Your next scheduled task will appear here.</p>
+          <button type="button" class="secondary" (click)="openAddQuiz()">
+            Plan a task</button
+          >} } @else {
+          <h2>Room to breathe.</h2>
+          <p class="muted">
+            Your upcoming reminders are off. You can turn them on in Profile.
+          </p>
+          <button class="secondary" type="button" (click)="goProfile()">
+            Preferences</button
+          >}
+        </section>
+        <section class="quick-section">
+          <p class="eyebrow">MAKE SPACE FOR PROGRESS</p>
+          <button
+            class="quick-action"
+            type="button"
+            data-guide="focus"
+            (click)="goStudy()"
+          >
+            <span
+              ><strong>Start a focus session</strong
+              ><small>One subject. Your full attention.</small></span
+            ><span>↗</span></button
+          ><button
+            class="quick-action"
+            type="button"
+            data-guide="material"
+            (click)="openAddMaterial()"
+          >
+            <span
+              ><strong>Add study material</strong
+              ><small>Keep useful references nearby.</small></span
+            ><span>+</span>
+          </button>
+        </section>
+      </aside>
+    </div>
+    <section class="subjects-section">
+      <div class="section-header">
+        <h2>Your subjects</h2>
+        <button class="text-button" type="button" (click)="goStudy()">
+          View study space ↗
+        </button>
+      </div>
+      <div class="subjects-grid" data-guide="subjects">
+        @for(s of data.subjects();track s.id){<button
+          class="subject-tile"
+          type="button"
+          (click)="goStudy()"
+          [style.--subject-color]="s.color"
+        >
+          <ion-icon [name]="s.icon"></ion-icon>
+          <h3>{{ s.name }}</h3>
+          <p>{{ s.topicCount }} tasks · {{ s.progress }}% complete</p>
+          <progress
+            [value]="s.progress"
+            max="100"
+            [attr.aria-label]="s.name + ' completion'"
+          ></progress></button
+        >}
+      </div>
+    </section>
+  </main></ion-content
+>

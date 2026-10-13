@@ -1,0 +1,108 @@
+<ion-header class="ion-no-border"
+  ><ion-toolbar
+    ><ion-buttons slot="start"
+      ><ion-back-button
+        defaultHref="/tabs/study"
+        text=""
+      ></ion-back-button></ion-buttons
+    ><ion-title>Materials</ion-title></ion-toolbar
+  ></ion-header
+><ion-content class="ion-padding"
+  ><main class="page-shell">
+    <header class="section-header page-intro">
+      <div>
+        <p class="eyebrow">YOUR REFERENCE SHELF</p>
+        <h1>Everything in its place.</h1>
+        <p class="muted">
+          Search notes, images, documents, and useful study links.
+        </p>
+      </div>
+      <button class="primary" type="button" (click)="openAddMaterial()">
+        + Add material
+      </button>
+    </header>
+    <label class="search"
+      ><span class="sr-only">Search materials</span
+      ><input
+        type="search"
+        [ngModel]="query()"
+        (ngModelChange)="query.set($event)"
+        placeholder="Search your materials"
+    /></label>
+    <div class="filter-row">
+      <button
+        type="button"
+        [class.active]="activeFilter() === ''"
+        (click)="setFilter('')"
+      >
+        All</button
+      >@for(s of data.subjects();track s.id){<button
+        type="button"
+        [class.active]="activeFilter() === s.id"
+        (click)="setFilter(s.id)"
+      >
+        {{ s.name }}</button
+      >}
+    </div>
+    <div class="materials-grid">
+      @for(m of filtered();track m.id){
+      <article
+        class="soft-card material-card"
+        [style.--subject-color]="data.subjectById(m.subjectId)?.color"
+      >
+        <div class="file-icon">
+          <ion-icon
+            [name]="m.kind === 'image' ? 'image-outline' : 'document-text-outline'"
+          ></ion-icon>
+        </div>
+        <div class="material-copy">
+          <div class="material-topline">
+            <span class="badge">{{ m.kind.toUpperCase() }}</span>
+            <span class="added-date">{{ m.addedOn }}</span>
+          </div>
+          <h2>{{ m.name }}</h2>
+          <p class="muted">
+            <span class="subject-dot"></span>{{ subjectName(m.subjectId) }} · {{
+            m.size }}
+          </p>
+          @if(safeUrl(m.url);as url){<a
+            [href]="url"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Open reference ↗</a
+          >}
+        </div>
+        <div class="button-row">
+          <button
+            class="text-button"
+            type="button"
+            (click)="edit(m)"
+            [attr.aria-label]="'Edit ' + m.name"
+          >
+            Edit</button
+          ><button
+            class="text-button"
+            type="button"
+            (click)="remove(m.id)"
+            [attr.aria-label]="'Delete ' + m.name"
+          >
+            Delete
+          </button>
+        </div>
+      </article>
+      }@empty{
+      <section class="soft-card empty-state">
+        <span class="empty-mark">+</span>
+        <h2>A fresh shelf.</h2>
+        <p>
+          No materials match this view. Save a useful reference or try another
+          filter.
+        </p>
+        <button type="button" class="secondary" (click)="openAddMaterial()">
+          Add your first material
+        </button>
+      </section>
+      }
+    </div>
+  </main></ion-content
+>

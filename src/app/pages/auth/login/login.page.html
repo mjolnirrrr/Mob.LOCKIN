@@ -1,0 +1,79 @@
+<ion-header class="ion-no-border">
+  <div class="auth-container">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/onboarding" text=""></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="auth-container">
+    <h1>Log in</h1>
+    <p class="subtitle">Welcome back!</p>
+
+    <form (ngSubmit)="login()" novalidate>
+      <ion-item class="form-field" lines="none">
+        <ion-input
+          label="Email"
+          labelPlacement="stacked"
+          placeholder="Enter your email"
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item class="form-field" lines="none">
+        <ion-input
+          label="Password"
+          labelPlacement="stacked"
+          placeholder="Enter your password"
+          [type]="showPassword() ? 'text' : 'password'"
+          name="password"
+          [(ngModel)]="password"
+        >
+          <button
+            type="button"
+            class="icon-button"
+            slot="end"
+            aria-label="Show or hide password"
+            (click)="showPassword.set(!showPassword())"
+          >
+            <ion-icon
+              [name]="showPassword() ? 'eye-off-outline' : 'eye-outline'"
+            ></ion-icon>
+          </button>
+        </ion-input>
+      </ion-item>
+
+      @if (error()) {
+      <ion-text color="danger"><p class="error">{{ error() }}</p></ion-text>
+      }
+
+      <a class="forgot" routerLink="/forgot-password">Forgot password?</a>
+
+      <ion-button
+        expand="block"
+        color="dark"
+        class="full-width-btn"
+        type="submit"
+        [disabled]="loading()"
+      >
+        @if (loading()) { <ion-spinner name="dots"></ion-spinner> } @else { Log
+        in }
+      </ion-button>
+    </form>
+
+    <p class="demo-hint">
+      Prototype access · No real account needed.<br />Demo:
+      <strong>markjohn&#64;example.com</strong> / <strong>123456</strong
+      ><br />Any valid email and a password of 6+ characters also work.
+    </p>
+
+    <p class="footer-link">
+      Don't have an account? <a routerLink="/signup">Sign up</a>
+    </p>
+  </div>
+</ion-content>

@@ -1,0 +1,79 @@
+<ion-header class="ion-no-border"
+  ><ion-toolbar
+    ><ion-title>{{ material ? "Edit material" : "Add material" }}</ion-title
+    ><button
+      class="icon-button"
+      slot="end"
+      aria-label="Close material form"
+      type="button"
+      (click)="dismiss()"
+    >
+      ✕
+    </button></ion-toolbar
+  ></ion-header
+>
+<ion-content class="ion-padding"
+  ><form class="modal-form" (ngSubmit)="done()" novalidate>
+    <p class="muted">Keep your study references together.</p>
+    <label
+      >Type<select aria-label="Type" name="kind" [(ngModel)]="kind">
+        <option value="pdf">PDF</option>
+        <option value="image">Image</option>
+        <option value="doc">Document</option>
+        <option value="link">Link</option>
+      </select></label
+    >
+    @if (kind !== "link") {
+      <label class="upload-box"
+        >Choose a file
+        <input
+          type="file"
+          accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,image/*"
+          (change)="selectFile($event)"
+      /></label>
+      <p class="hint">
+        Prototype: only the name, type and size are saved. File contents are not
+        uploaded or stored.
+      </p>
+    }
+    <label
+      >Name<input
+        name="name"
+        [(ngModel)]="name"
+        maxlength="200"
+        placeholder="e.g. Week 2 lecture notes"
+        required
+    /></label>
+    <label
+      >Subject<select
+        aria-label="Subject"
+        name="subject"
+        [(ngModel)]="subjectId"
+        required
+      >
+        <option value="" disabled>Choose a subject</option>
+        @for (s of data.subjects(); track s.id) {
+          <option [value]="s.id">{{ s.name }}</option>
+        }
+      </select></label
+    >
+    @if (kind === "link") {
+      <label
+        >URL<input
+          name="url"
+          type="url"
+          [(ngModel)]="url"
+          placeholder="https://example.com/notes"
+      /></label>
+    }
+    @if (error) {
+      <p class="error" role="alert">{{ error }}</p>
+    }
+    <div class="button-row">
+      <button class="primary" type="submit">Save material</button
+      ><button class="secondary" type="button" (click)="dismiss()">
+        Cancel
+      </button>
+    </div>
+  </form></ion-content
+>
