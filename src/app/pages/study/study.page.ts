@@ -89,6 +89,11 @@ export class StudyPage {
       title: "Choose a duration",
       text: "Pick 15, 25 or 50 minutes. You can only change it before you start.",
     },
+        {
+      target: '[data-guide="timer-subject"]',
+      title: "Pick a subject",
+      text: "Choose what you're studying so the time counts toward that subject on Stats. Leave it on Any if you don't need that.",
+    },
     {
       target: '[data-guide="timer-clock"]',
       title: "Time remaining",

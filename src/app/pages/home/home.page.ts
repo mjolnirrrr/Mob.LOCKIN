@@ -167,6 +167,10 @@ export class HomePage {
     await this.tour.start(this.guideSteps);
   }
 
+  ionViewWillLeave(): void {
+  this.tour.stop();
+}
+
   showUpcoming(): boolean {
     return readLocal("lockin.reminders", true);
   }

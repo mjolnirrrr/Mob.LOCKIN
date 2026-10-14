@@ -15,6 +15,7 @@ import { helpCircleOutline } from "ionicons/icons";
 import { MockDataService } from "../../services/mock-data.service";
 import { MockAuthService } from "../../services/mock-auth.service";
 import { ThemeService } from "../../services/theme.service";
+import { ConfirmService } from "../../services/confirm.service";
 import { validEmail, readLocal, writeLocal } from "../../services/local-store";
 import { GuideTourService, TourStep } from "../../services/guide-tour.service";
 
@@ -41,6 +42,7 @@ export class ProfilePage {
   private auth = inject(MockAuthService);
   private router = inject(Router);
   private tour = inject(GuideTourService);
+  private confirm = inject(ConfirmService);
   private busy = false;
 
   draft = { ...this.data.profile() };
@@ -125,6 +127,7 @@ export class ProfilePage {
     this.error.set("");
     this.message.set("");
   }
+
   save(): void {
     this.error.set("");
     this.message.set("");
@@ -145,11 +148,22 @@ export class ProfilePage {
     });
     this.message.set("Profile saved. Your planner is up to date.");
   }
+
   setReminders(value: boolean): void {
     this.reminders.set(value);
     writeLocal("lockin.reminders", value);
   }
-  logout(): void {
+
+  // Asks for confirmation before logging out.
+  async logout(): Promise<void> {
+    const ok = await this.confirm.ask({
+      title: "Log out?",
+      message: "You'll need to log in again to open your planner.",
+      confirmText: "Log out",
+      cancelText: "Cancel",
+      danger: true,
+    });
+    if (!ok) return;
     this.auth.logout();
     this.router.navigateByUrl("/login", { replaceUrl: true });
   }
